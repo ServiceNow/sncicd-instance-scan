@@ -1,0 +1,15 @@
+# Ignore any generated TypeScript -> JavaScript files
+.github/actions/**/*.js
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Optional npm cache directory
+.npm
+
+.idea
+
+# Optional eslint cache
+.eslintcache
