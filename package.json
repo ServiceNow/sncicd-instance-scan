@@ -1,0 +1,41 @@
+{
+  "name": "sncicd-install-app",
+  "version": "1.0.0",
+  "description": "Installs the specified application from the application repository onto the local instance.",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc --outDir lib",
+    "test": "tsc --noEmit && jest unit --runInBand",
+    "integration": "tsc --noEmit && jest integration --runInBand",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --config prettier.json --write ./**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ServiceNow/sncicd-install-app.git"
+  },
+  "author": "SoftServe inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ServiceNow/sncicd-install-app/issues"
+  },
+  "homepage": "https://github.com/ServiceNow/sncicd-install-app#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.12",
+    "@types/node": "^14.6.2",
+    "@typescript-eslint/eslint-plugin": "^4.0.1",
+    "@typescript-eslint/parser": "^4.0.1",
+    "eslint": "^7.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.1",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "axios": "^0.21.1"
+  }
+}
