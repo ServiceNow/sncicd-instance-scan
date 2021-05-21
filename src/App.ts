@@ -66,32 +66,32 @@ export default class App {
     getRequestUrl(scantype = ''): string {
         if (this.props.scan_instance) {
             const baseUrl = `https://${this.props.scan_instance}.service-now.com/api/sn_cicd/instance_scan`
-            let fullUrl, targetTable, targetSysId, comboSysId, suiteSysIdScoped, suiteSysIdUpdate: string
+            let fullUrl: string
 
             switch (scantype) {
                 case 'full':
                     fullUrl = baseUrl + '/full_scan'
-                    break
+                    break;
                 case 'point':
-                    targetTable = core.getInput('targetTable')
-                    targetSysId = core.getInput('targetSysId')
+                    const targetTable = core.getInput('targetTable')
+                    const targetSysId = core.getInput('targetSysId')
                     this.checkParamsValidity(!targetTable || !targetSysId)
                     fullUrl = baseUrl + `/point_scan?target_table=${targetTable}&target_sys_id=${targetSysId}`
                     break
                 case 'suite_combo':
-                    comboSysId = core.getInput('comboSysId')
+                    const comboSysId = core.getInput('comboSysId')
                     this.checkParamsValidity(!comboSysId)
                     fullUrl = baseUrl + `/suite_scan/combo/${comboSysId}`
                     break
                 case 'suite_scoped':
                     // requires body-payload
-                    suiteSysIdScoped = core.getInput('suiteSysId')
+                    const suiteSysIdScoped = core.getInput('suiteSysId')
                     this.checkParamsValidity(!suiteSysIdScoped)
                     fullUrl = baseUrl + `/suite_scan/${suiteSysIdScoped}/scoped_apps`
                     break
                 case 'suite_update':
                     // requires body-payload
-                    suiteSysIdUpdate = core.getInput('suiteSysId')
+                    const suiteSysIdUpdate = core.getInput('suiteSysId')
                     this.checkParamsValidity(!suiteSysIdUpdate)
                     fullUrl = baseUrl + `/suite_scan/${suiteSysIdUpdate}/update_sets`
                     break
@@ -133,7 +133,11 @@ export default class App {
                 throw new Error(Errors.WRONG_SCANTYPE)
         }
 
-        return payload
+        if (ids.length === 0) {
+            throw new Error(Errors.NO_PAYLOAD);
+        }
+        
+        return payload 
     }
 
     /**

@@ -8,9 +8,10 @@ export interface AppProps extends User {
     debug?: boolean;
 }
 
+
 export interface Payload {
-    app_scope_sys_ids?: string[];
-    update_set_sys_ids?: string[];
+    app_scope_sys_ids?: string[],
+    update_set_sys_ids?: string[],
 }
 
 export interface ErrorResult {
@@ -28,7 +29,9 @@ export enum Errors {
     NO_PARAMS = 'Request params are wrong or not defied',
     WRONG_SCANTYPE = 'Scan type is not supported',
     CANCELLED = 'Canceled',
+    NO_PAYLOAD = 'Payload is not provided.',
 }
+
 
 export interface ScanResponse {
     data: {

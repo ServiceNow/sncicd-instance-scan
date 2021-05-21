@@ -4,7 +4,10 @@ import { Errors } from '../src/App.types'
 
 describe('Install app', () => {
     const original = process.env
-    const envs = { nowPassword: 'test', nowInstallInstance: 'test', nowUsername: 'test' }
+    const envs = {        nowPassword: 'test',
+        nowInstallInstance: 'test',
+        nowUsername: 'test',
+    }
     beforeEach(() => {
         jest.resetModules()
         jest.clearAllMocks()
@@ -32,7 +35,10 @@ describe('Install app', () => {
     })
 
     it('success with creds', () => {
+
         run()
         expect(core.setFailed).not.toHaveBeenCalled()
     })
 })
+
+
