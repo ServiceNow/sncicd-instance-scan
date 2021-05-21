@@ -71,7 +71,7 @@ export default class App {
             switch (scantype) {
                 case 'full':
                     fullUrl = baseUrl + '/full_scan'
-                    break;
+                    break
                 case 'point':
                     const targetTable = core.getInput('targetTable')
                     const targetSysId = core.getInput('targetSysId')
@@ -115,16 +115,19 @@ export default class App {
     buildRequestPayload(scantype = ''): Payload {
         let payload: Payload = {}
         let ids: string[] = []
+        let input: string
 
         switch (scantype) {
             case 'suite_scoped':
-                ids = core.getInput('appScopeSysIds').split(',')
+                input = core.getInput('appScopeSysIds')
+                ids = input.split(',')
                 payload = {
                     app_scope_sys_ids: ids,
                 }
                 break
             case 'suite_update':
-                ids = core.getInput('updateSetSysIds').split(',')
+                input = core.getInput('updateSetSysIds')
+                ids = input.split(',')
                 payload = {
                     update_set_sys_ids: ids,
                 }
@@ -133,11 +136,11 @@ export default class App {
                 throw new Error(Errors.WRONG_SCANTYPE)
         }
 
-        if (ids.length === 0) {
-            throw new Error(Errors.NO_PAYLOAD);
+        if (!input) {
+            throw new Error(Errors.NO_PAYLOAD)
         }
-        
-        return payload 
+
+        return payload
     }
 
     /**
