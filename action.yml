@@ -1,0 +1,31 @@
+name: 'ServiceNow CI/CD Instance Scan'
+description: 'Instance Scan feature that has 5 types of scans to choose from.'
+author: "ServiceNow"
+inputs:
+  scantype:
+    description: "Type of scan process. Can be equal to full, point, suite_combo, suite_scoped, suite_update."
+    required: true
+  targetTable:
+    description: "URL param if point scan type is specified."
+    required: false
+  targetSysId:
+    description: "URL param if point scan type is specified."
+    required: false
+  comboSysId:
+    description: "URL param if suite_combo scan type is specified."
+    required: false
+  suiteSysId:
+    description: "URL param if suite_scoped or suite_update scan type is specified."
+    required: false
+  appScopeSysIds:
+    description: "Payload params, comma separated(if suite_scoped or suite_update scan type is specified)."
+    required: false
+  updateSetSysIds:
+    description: "Payload params, comma separated(if suite_scoped or suite_update scan type is specified)."
+    required: false
+runs:
+  using: 'node12'
+  main: './lib/index.js'
+branding:
+  icon: 'refresh-ccw'
+  color: 'green'
