@@ -4,9 +4,12 @@ Execute Instance Scans and get progress and results of runs.
 
 # Use Case
 1. Scoped Applications
-    a. If you have a scoped application linked to source control, you can configure Github Actions to trigger when a commit is added from ServiceNow. You would either set it up to just trigger on the scoped application using `appScopeSysIds`or after you have manually run a set of suites on the scoped application, you can utilize the `comboSysId`
+
+    - If you have a scoped application linked to source control, you can configure Github Actions to trigger when a commit is added from ServiceNow. You would either set it up to just trigger on the scoped application using `appScopeSysIds`or after you have manually run a set of suites on the scoped application, you can utilize the `comboSysId`
+    
 2. Triggered remotely through Github APIs
-    b. Another way to utilize this when you don't have code linked to source control, would be to create business rules and REST messages (or flows and rest steps) to trigger the scans. The example that comes to mind is if you want to trigger this without writing code on the target instance. If that is the case, you are going to run into issues around IP listing and having the checks / suite sys_ids known. Although it is possible, it seems overkill for this use case because you could just trigger this through internal ServiceNow APIs
+
+    - Another way to utilize this when you don't have code linked to source control, would be to create business rules and REST messages (or flows and rest steps) to trigger the scans. The example that comes to mind is if you want to trigger this without writing code on the target instance. If that is the case, you are going to run into issues around IP listing and having the checks / suite sys_ids known. Although it is possible, it seems overkill for this use case because you could just trigger this through internal ServiceNow APIs
 
 # Usage
 ## Step 1: Prepare values for setting up your variables for Actions
