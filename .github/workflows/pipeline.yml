@@ -1,0 +1,15 @@
+- name: ServiceNow CI/CD Instance Scan
+    uses: ./.github/actions/scan
+    id: scan
+    with:
+        scantype: full # point, suite_combo, suite_scoped, suite_update
+#         targetTable: <target_table>
+#         targetSysId: <target_sys_id>
+#         comboSysId: <combo_sys_id>
+#         suiteSysId: <suite_sys_id>
+#         appScopeSysIds: <app_scope_sys_ids_comma_separated>
+#         updateSetSysIds: <update_set_sys_ids_comma_separated>
+    env:
+        nowUsername: ${{ secrets.NOW_USERNAME }}
+        nowPassword: ${{ secrets.NOW_PASSWORD }}
+        nowScanInstance: ${{ secrets.NOW_SCAN_INSTANCE }}
